@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANTA</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/main.js" defer> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            set_text(get_logan_text, "Logan");
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 50% -10%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(180deg, #9fd8e8 0%, #4aa3c7 30%, #1f6f9a 65%, #0c3552 100%) fixed; overflow-x: hidden;">
+
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"
+         style="position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;">
+        <defs>
+            <g id="fish">
+                <polygon points="-34,0 -58,-16 -58,16" fill="currentColor">
+                    <animateTransform attributeName="transform" type="scale" values="1 1;0.7 1;1 1"
+                                      dur="0.6s" repeatCount="indefinite" additive="sum"/>
+                </polygon>
+                <ellipse cx="0" cy="0" rx="36" ry="18" fill="currentColor"/>
+                <ellipse cx="4" cy="6" rx="22" ry="7" fill="#fff" opacity="0.25"/>
+                <circle cx="20" cy="-4" r="3.5" fill="#fff"/>
+                <circle cx="21" cy="-4" r="1.6" fill="#0c3552"/>
+            </g>
+            <path id="leaf" d="M0 0 C 10 -14, 30 -14, 42 0 C 30 14, 10 14, 0 0 Z"/>
+        </defs>
+
+        <!-- viny plants -->
+        <g fill="#3a9d5d" stroke="#1f6b3f" stroke-width="1.5">
+            <!-- vine 1 -->
+            <g>
+                <animateTransform attributeName="transform" type="rotate" values="-2 100 810;2 100 810;-2 100 810" dur="7s" repeatCount="indefinite"/>
+                <path d="M100 810 C 50 700, 150 620, 100 520 S 50 400, 100 330" fill="none" stroke="#2d8a50" stroke-width="8" stroke-linecap="round"/>
+                <use href="#leaf" transform="translate(85 700) rotate(-140)"/>
+                <use href="#leaf" transform="translate(122 600) rotate(-40)"/>
+                <use href="#leaf" transform="translate(88 500) rotate(-140) scale(0.9)"/>
+                <use href="#leaf" transform="translate(88 400) rotate(-40) scale(0.8)"/>
+            </g>
+
+            <!-- vine 2 -->
+            <g>
+                <animateTransform attributeName="transform" type="rotate" values="2 340 810;-2 340 810;2 340 810" dur="8s" begin="-3s" repeatCount="indefinite"/>
+                <path d="M340 810 C 300 730, 380 660, 340 580 S 310 500, 350 440" fill="none" stroke="#2d8a50" stroke-width="7" stroke-linecap="round"/>
+                <use href="#leaf" transform="translate(328 740) rotate(-140) scale(0.9)"/>
+                <use href="#leaf" transform="translate(362 650) rotate(-40) scale(0.9)"/>
+                <use href="#leaf" transform="translate(326 560) rotate(-140) scale(0.8)"/>
+                <use href="#leaf" transform="translate(342 470) rotate(-40) scale(0.7)"/>
+            </g>
+
+            <!-- vine 3 -->
+            <g>
+                <animateTransform attributeName="transform" type="rotate" values="-2 870 810;2 870 810;-2 870 810" dur="9s" begin="-5s" repeatCount="indefinite"/>
+                <path d="M870 810 C 910 710, 830 630, 880 540 S 920 420, 870 350" fill="none" stroke="#2d8a50" stroke-width="8" stroke-linecap="round"/>
+                <use href="#leaf" transform="translate(890 720) rotate(-40)"/>
+                <use href="#leaf" transform="translate(850 640) rotate(-140)"/>
+                <use href="#leaf" transform="translate(886 540) rotate(-40) scale(0.9)"/>
+                <use href="#leaf" transform="translate(888 440) rotate(-140) scale(0.8)"/>
+            </g>
+
+            <!-- vine 4 -->
+            <g>
+                <animateTransform attributeName="transform" type="rotate" values="2 1110 810;-2 1110 810;2 1110 810" dur="6.5s" begin="-1s" repeatCount="indefinite"/>
+                <path d="M1110 810 C 1070 740, 1150 680, 1110 600 S 1080 540, 1115 490" fill="none" stroke="#2d8a50" stroke-width="7" stroke-linecap="round"/>
+                <use href="#leaf" transform="translate(1098 750) rotate(-140) scale(0.9)"/>
+                <use href="#leaf" transform="translate(1130 660) rotate(-40) scale(0.9)"/>
+                <use href="#leaf" transform="translate(1098 585) rotate(-140) scale(0.8)"/>
+            </g>
+        </g>
+
+        <!-- fish swimming left to right -->
+        <g color="#ff9f43">
+            <use href="#fish">
+                <animateMotion dur="26s" repeatCount="indefinite"
+                    path="M -100 250 C 200 200, 400 320, 700 260 S 1100 220, 1350 280"/>
+            </use>
+        </g>
+        <g color="#ffd166" transform="translate(0 120)">
+            <use href="#fish" transform="scale(0.7)">
+                <animateMotion dur="34s" begin="-12s" repeatCount="indefinite"
+                    path="M -150 350 C 250 300, 500 420, 900 360 S 1300 330, 1700 380"/>
+            </use>
+        </g>
+
+        <!-- fish swimming right to left (flipped) -->
+        <g color="#ee6c4d">
+            <g transform="scale(-1 1)">
+                <use href="#fish" transform="scale(1.2)">
+                    <animateMotion dur="30s" begin="-8s" repeatCount="indefinite"
+                        path="M -100 480 C 200 520, 500 430, 800 490 S 1100 540, 1400 470"/>
+                </use>
+            </g>
+        </g>
+        <g color="#a8dadc">
+            <g transform="scale(-1 1)">
+                <use href="#fish" transform="scale(0.55)">
+                    <animateMotion dur="22s" begin="-5s" repeatCount="indefinite"
+                        path="M -200 1100 C 300 1000, 700 1200, 1200 1080 S 1900 1050, 2300 1120"/>
+                </use>
+            </g>
+        </g>
+
+        <!-- bubbles -->
+        <g fill="none" stroke="#fff" stroke-width="2" opacity="0.5">
+            <circle cx="180" cy="780" r="6">
+                <animate attributeName="cy" values="800;-20" dur="9s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;0.6;0" dur="9s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="620" cy="780" r="9">
+                <animate attributeName="cy" values="800;-20" dur="12s" begin="-4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;0.6;0" dur="12s" begin="-4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="980" cy="780" r="5">
+                <animate attributeName="cy" values="800;-20" dur="10s" begin="-7s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;0.6;0" dur="10s" begin="-7s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </svg>
+    <svg viewBox="0 300 1200 520" aria-hidden="true"
+     style="position: fixed; bottom: 0; left: 0; width: 100%; height: auto; pointer-events: none; z-index: -1;">
+    <defs>
+        <path id="leaf" d="M0 0 C 10 -14, 30 -14, 42 0 C 30 14, 10 14, 0 0 Z"/>
+    </defs>
+
+    <g fill="#3a9d5d" stroke="#1f6b3f" stroke-width="1.5">
+        <!-- vine 1 -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" values="-2 100 810;2 100 810;-2 100 810" dur="7s" repeatCount="indefinite"/>
+            <path d="M100 810 C 50 700, 150 620, 100 520 S 50 400, 100 330" fill="none" stroke="#2d8a50" stroke-width="8" stroke-linecap="round"/>
+            <use href="#leaf" transform="translate(85 700) rotate(-140)"/>
+            <use href="#leaf" transform="translate(122 600) rotate(-40)"/>
+            <use href="#leaf" transform="translate(88 500) rotate(-140) scale(0.9)"/>
+            <use href="#leaf" transform="translate(88 400) rotate(-40) scale(0.8)"/>
+        </g>
+
+        <!-- vine 2 -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" values="2 340 810;-2 340 810;2 340 810" dur="8s" begin="-3s" repeatCount="indefinite"/>
+            <path d="M340 810 C 300 730, 380 660, 340 580 S 310 500, 350 440" fill="none" stroke="#2d8a50" stroke-width="7" stroke-linecap="round"/>
+            <use href="#leaf" transform="translate(328 740) rotate(-140) scale(0.9)"/>
+            <use href="#leaf" transform="translate(362 650) rotate(-40) scale(0.9)"/>
+            <use href="#leaf" transform="translate(326 560) rotate(-140) scale(0.8)"/>
+            <use href="#leaf" transform="translate(342 470) rotate(-40) scale(0.7)"/>
+        </g>
+
+        <!-- vine 3 -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" values="-2 870 810;2 870 810;-2 870 810" dur="9s" begin="-5s" repeatCount="indefinite"/>
+            <path d="M870 810 C 910 710, 830 630, 880 540 S 920 420, 870 350" fill="none" stroke="#2d8a50" stroke-width="8" stroke-linecap="round"/>
+            <use href="#leaf" transform="translate(890 720) rotate(-40)"/>
+            <use href="#leaf" transform="translate(850 640) rotate(-140)"/>
+            <use href="#leaf" transform="translate(886 540) rotate(-40) scale(0.9)"/>
+            <use href="#leaf" transform="translate(888 440) rotate(-140) scale(0.8)"/>
+        </g>
+
+        <!-- vine 4 -->
+        <g>
+            <animateTransform attributeName="transform" type="rotate" values="2 1110 810;-2 1110 810;2 1110 810" dur="6.5s" begin="-1s" repeatCount="indefinite"/>
+            <path d="M1110 810 C 1070 740, 1150 680, 1110 600 S 1080 540, 1115 490" fill="none" stroke="#2d8a50" stroke-width="7" stroke-linecap="round"/>
+            <use href="#leaf" transform="translate(1098 750) rotate(-140) scale(0.9)"/>
+            <use href="#leaf" transform="translate(1130 660) rotate(-40) scale(0.9)"/>
+            <use href="#leaf" transform="translate(1098 585) rotate(-140) scale(0.8)"/>
+        </g>
+    </g>
+</svg>
+    <h1 id="main_text"></h1>
+</body>
+</html>

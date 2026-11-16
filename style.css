@@ -1,0 +1,280 @@
+body {
+    font-family: 'Lora', serif;
+}
+
+.default_body {
+    background-color: #F5F0E6;
+    color: #3D3329;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    margin: 0;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.person_name {
+        color: #A66D4F;
+}
+
+.avani_body {
+    background-color: #080D1C;
+    color: #F5F0E6;
+
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #FFFFFF, transparent),
+        radial-gradient(2px 2px at 80px 120px, #FFFFFF, transparent),
+        radial-gradient(1px 1px at 150px 80px, #FFFFFF, transparent),
+        radial-gradient(2px 2px at 220px 180px, #FFFFFF, transparent),
+        radial-gradient(1px 1px at 300px 40px, #FFFFFF, transparent),
+        radial-gradient(2px 2px at 380px 140px, #FFFFFF, transparent),
+        radial-gradient(1px 1px at 450px 220px, #FFFFFF, transparent),
+        radial-gradient(2px 2px at 500px 70px, #FFFFFF, transparent);
+
+    background-size: 550px 300px;
+    background-repeat: repeat;
+
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avani_main {
+    color: #F5F0E6
+}
+.avani_secondary {
+    color: #D6B8FF
+}
+
+.sheep-body {
+    position: absolute;
+    width: 75px;
+    height: 48px;
+    background: #fffaf0;
+    border-radius: 50%;
+    top: 15px;
+    left: 5px;
+    box-shadow:
+        -12px 0 #fffaf0,
+        0 -10px #fffaf0,
+        12px -5px #fffaf0,
+        15px 8px #fffaf0,
+        -8px 10px #fffaf0;
+}
+
+.sheep-head {
+    position: absolute;
+    width: 30px;
+    height: 38px;
+    background: #37313a;
+    border-radius: 50%;
+    top: 12px;
+    right: 0;
+    z-index: 2;
+}
+
+.sheep-ear {
+    position: absolute;
+    width: 15px;
+    height: 9px;
+    background: #37313a;
+    border-radius: 50%;
+    top: 5px;
+}
+
+.sheep-ear.left {
+    left: -10px;
+    transform: rotate(25deg);
+}
+
+.sheep-ear.right {
+    right: -10px;
+    transform: rotate(-25deg);
+}
+
+.sheep-eye {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    top: 13px;
+}
+
+.sheep-eye.left {
+    left: 8px;
+}
+
+.sheep-eye.right {
+    right: 8px;
+}
+
+.sheep-legs {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    display: flex;
+    gap: 13px;
+    z-index: -1;
+}
+
+.sheep-legs div {
+    width: 6px;
+    height: 22px;
+    background: #37313a;
+    border-radius: 3px;
+}
+
+.sheep {
+    position: fixed;
+    bottom: -90px;
+    left: -100px;
+    width: 100px;
+    height: 80px;
+    animation: 
+        sheep_run 7s linear infinite,
+        sheep_hop 3s ease-in-out infinite;
+}
+
+@keyframes sheep_run {
+    from {
+        left: -100px;
+    }
+    to {
+        left: 110%;
+    }
+}
+
+@keyframes sheep_hop {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-300px);
+    }
+}
+
+
+
+/* vibe slop slots */
+.headline {
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1.3em;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.slot {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 1.3em;
+    line-height: 1.3em;
+    cursor: pointer;
+    perspective: 500px;
+    perspective-origin: 50% 50%;
+    color: #ffb347;
+    transition: width 0.4s ease;
+}
+
+.slot:focus-visible {
+    outline: 2px dashed #ffb347;
+    outline-offset: 6px;
+}
+
+.wheel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.word {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    white-space: nowrap;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+    user-select: none;
+}
+
+
+/* more vide code slop */
+.scroll {
+    position: relative;
+    width: min(90%, 420px);
+    margin: 0 auto;
+    color: #4a3218;
+    font-family: Georgia, "Times New Roman", serif;
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+}
+
+.scroll-paper {
+    position: relative;
+    margin: 0 14px;
+    padding: 1.5rem 1.75rem;
+    background:
+        radial-gradient(ellipse at top, rgba(255, 255, 255, 0.35), transparent 60%),
+        linear-gradient(90deg,
+            rgba(120, 80, 30, 0.35) 0%,
+            rgba(120, 80, 30, 0) 8%,
+            rgba(120, 80, 30, 0) 92%,
+            rgba(120, 80, 30, 0.35) 100%),
+        #f1deb0;
+    box-shadow: inset 0 0 30px rgba(139, 94, 38, 0.45);
+}
+
+.scroll-paper h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.scroll-paper h1 {
+    margin: 0;
+    text-align: left;
+}
+
+.scroll-roll {
+    position: relative;
+    height: 28px;
+    border-radius: 14px;
+    background: linear-gradient(180deg,
+        #a8793a 0%,
+        #e6c585 30%,
+        #f6e2b0 50%,
+        #c9964f 75%,
+        #8a5f28 100%);
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* wooden end caps */
+.scroll-roll::before,
+.scroll-roll::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 36px;
+    transform: translateY(-50%);
+    border-radius: 6px;
+    background: linear-gradient(180deg, #5a3a17, #8b5e2a 50%, #4a2f12);
+}
+
+.scroll-roll::before { left: -6px; }
+.scroll-roll::after  { right: -6px; }

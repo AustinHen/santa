@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SANTA</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+        <script src="/main.js" defer> </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                set_text(get_itsara_text, "Itsara");
+            });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="default_body">
+    <h1 id="main_text" class="headline">
+        <button class="slot" id="slot" aria-label="Spin the word wheel">
+            <div class="wheel" id="wheel">
+                <div class="word">Bitch</div>
+                <div class="word">Freak</div>
+                <div class="word">Gay</div>
+                <div class="word">It</div>
+                <div class="word">Shit</div>
+            </div>
+        </button>sara you have
+    </h1> 
+    <script>
+        const slot = document.getElementById('slot');
+const words = [...document.querySelectorAll('#wheel .word')];
+
+const count = words.length;
+const step = 360 / count;
+const DURATION = 2800;
+
+let angle = 0;        // current wheel rotation in degrees
+let index = 0;        // word currently at the front
+let spinning = false;
+let radius = 0;
+
+const easeOut = t => 1 - Math.pow(1 - t, 4);
+
+function measure() {
+    // radius of the cylinder so adjacent words touch edge-to-edge
+    const h = slot.offsetHeight;
+    radius = (h / 2) / Math.tan((step / 2) * Math.PI / 180);
+}
+
+function render() {
+    words.forEach((word, i) => {
+        const rel = i * step - angle;
+        const rad = rel * Math.PI / 180;
+        const facing = Math.cos(rad);                 // 1 at the front, 0 at the sides, <0 behind
+        const opacity = facing > 0 ? Math.pow(facing, 1.8) : 0;
+        word.style.transform = `rotateX(${rel}deg) translateZ(${radius}px)`;
+        word.style.opacity = opacity.toFixed(3);
+    });
+}
+
+function fitWidth(i) {
+    slot.style.width = words[i].offsetWidth + 'px';
+}
+
+function spinTo(target) {
+    if (spinning) return;
+    spinning = true;
+
+    const current = ((angle % 360) + 360) % 360;
+    const targetAngle = target * step;
+    let delta = targetAngle - current;
+    if (delta <= 0) delta += 360;
+    const spins = 2 + Math.floor(Math.random() * 2);  // 2–3 extra full rotations
+    const total = delta + spins * 360;
+
+    const start = angle;
+    const startTime = performance.now();
+    fitWidth(target);
+
+    function frame(now) {
+        const t = Math.min((now - startTime) / DURATION, 1);
+        angle = start + total * easeOut(t);
+        render();
+        if (t < 1) {
+            requestAnimationFrame(frame);
+        } else {
+            angle = start + total;
+            index = target;
+            spinning = false;
+        }
+    }
+    requestAnimationFrame(frame);
+}
+
+function randomIndex(exclude) {
+    let n;
+    do { n = Math.floor(Math.random() * count); } while (n === exclude);
+    return n;
+}
+
+function init() {
+    measure();
+    render();
+    fitWidth(0);
+    // auto-spin to a random word on load
+    setTimeout(() => spinTo(randomIndex(-1)), 300);
+}
+
+slot.addEventListener('click', () => spinTo(randomIndex(index)));
+window.addEventListener('resize', () => { measure(); fitWidth(index); render(); });
+
+document.fonts.ready.then(init);
+    </script>
+</body>
+</html>
